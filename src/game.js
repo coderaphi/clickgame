@@ -4,15 +4,41 @@ import characters from "./characters.json"
 import ImageCard from "./components/ImageCard"
 import Wrapper from './components/wrapper'
 
-
 class Game extends Component {
     state = {
-        characters,
-        Header,
- };
+        characters: characters,
+        score: 0,
+        topscore: 0,
+        clickedIds: [],
+        shake: ''
+    };
 
 
+    handleClick = (id) => {
+        // this.shuffle()
+        const { clickedIds, score, topscore} = this.state;
+        
+       
+        // const clickedIds = this.state.clickedIds;
+        if (clickedIds.includes(id)) {
+            // alert("duplicate click")
+            this.setState({
+                clickedIds: [],
+                score: 0,
+                shake: 'shake'
+            });
+        } else {
+            clickedIds.push(id);
+            this.setState({
+                clickedIds: clickedIds,
+                score: score + 1,
+                topscore: topscore + 1,
+                shake: ''
+            });
+        }
+        this.shuffle();
 
+    }
 
     shuffle = () => {
         var array = this.state.characters;
@@ -20,39 +46,35 @@ class Game extends Component {
         var temp;
         var index;
 
+
         while (ctr > 0) {
-            index= index +1
+
             index = Math.floor(Math.random() * ctr);
             ctr--;
             temp = array[ctr];
             array[ctr] = array[index];
             array[index] = temp;
-            if(index>2){
-                alert("clicked more than once")
-
-            }
-
         }
-        
-
         this.setState({
             characters: array
+
         });
-
-
     };
 
     render() {
         return (
             <>
-                <Header />
+                <Header
+                    topscore={this.state.topscore}
+                    score={this.state.score}
+                    
+                >
+                </Header>
                 <Wrapper>
+                    <div className={`imgContainer ${this.state.shake}`} >
 
-
-                    <div className="imgContainer" >
-
-                        {this.state.characters.map(character => (
-                            <div className="imgCard" onClick={this.shuffle} showAlert={this.id}>
+                        {this.state.characters.map((character, index) => (
+                            <div className="imgCard" onClick={() => this.handleClick(character.id)}>
                                 <ImageCard
                                     key={character.id}
                                     image={character.image}
@@ -62,7 +84,6 @@ class Game extends Component {
                             </div>
                         ))}
                     </div>
-
                 </Wrapper>
             </>
 
