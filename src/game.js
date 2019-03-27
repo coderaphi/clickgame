@@ -13,12 +13,11 @@ class Game extends Component {
         shake: ''
     };
 
-
     handleClick = (id) => {
         // this.shuffle()
-        const { clickedIds, score, topscore} = this.state;
-        
-       
+        const { clickedIds, score } = this.state;
+
+
         // const clickedIds = this.state.clickedIds;
         if (clickedIds.includes(id)) {
             // alert("duplicate click")
@@ -32,14 +31,23 @@ class Game extends Component {
             this.setState({
                 clickedIds: clickedIds,
                 score: score + 1,
-                topscore: topscore + 1,
                 shake: ''
-            });
-        }
-        this.shuffle();
 
+            });
+            this.scorecalc();
+            this.shuffle();
+
+        }
     }
 
+    scorecalc = () => {
+
+        
+        if (this.state.score > this.state.topscore) {
+            this.setState({topscore: this.state.score})
+        }
+
+    }
     shuffle = () => {
         var array = this.state.characters;
         var ctr = array.length;
@@ -67,7 +75,7 @@ class Game extends Component {
                 <Header
                     topscore={this.state.topscore}
                     score={this.state.score}
-                    
+
                 >
                 </Header>
                 <Wrapper>
