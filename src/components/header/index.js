@@ -11,7 +11,7 @@ function header(props) {
                     <a id="gamename" className="gamename" href='/'>Clicky Game</a>
                 </li>
                 <li>
-                    <a id="alert" className="alert" href='#'> You Lose</a>
+                    <a id="alert" className="alert" href='#'> {props.alert}</a>
                 </li>
             
                 <li>
@@ -20,7 +20,7 @@ function header(props) {
 
             </ul>
                 <div className="banner">
-                    Clicky game : The Memory Tester
+                    Know your Minions
                 </div>
 
 

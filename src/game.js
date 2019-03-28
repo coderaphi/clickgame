@@ -10,7 +10,8 @@ class Game extends Component {
         score: 0,
         topscore: 0,
         clickedIds: [],
-        shake: ''
+        shake: '',
+        alert:""
     };
 
     handleClick = (id) => {
@@ -24,14 +25,17 @@ class Game extends Component {
             this.setState({
                 clickedIds: [],
                 score: 0,
-                shake: 'shake'
+                shake: 'shake',
+                alert: 'You Lose'
+
             });
         } else {
             clickedIds.push(id);
             this.setState({
                 clickedIds: clickedIds,
                 score: score + 1,
-                shake: ''
+                shake: '',
+                alert: ''
 
             });
             this.scorecalc();
@@ -75,6 +79,7 @@ class Game extends Component {
                 <Header
                     topscore={this.state.topscore}
                     score={this.state.score}
+                    alert={this.state.alert}
 
                 >
                 </Header>

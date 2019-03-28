@@ -31,8 +31,12 @@
 
 #alert {
     text-decoration:none;
-    font-size: 40px;
+    font-size: 60px;
+    text-shadow: -1px 0 rgb(251, 255, 0), 0 1px  rgb(251, 255, 0), 1px 0 rgb(251, 255, 0), 0 -1px rgb(251, 255, 0);
     color: rgb(173, 48, 48);
+    font-family: 'Alfa Slab One', cursive;
+    font-family: 'Luckiest Guy', cursive;
+
     
     
 
@@ -50,7 +54,7 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    background-image: url("http://images6.fanpop.com/image/photos/38600000/Looney-Tunes-the-looney-tunes-show-38681633-1600-900.jpg");
+    background-image: url("http://mylpl.info/wp-content/uploads/2015/12/Minion-Banner.jpg");
     font-family: 'Alfa Slab One', cursive;
     font-family: 'Luckiest Guy', cursive;
     color: white;
