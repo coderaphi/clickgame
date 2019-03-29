@@ -4,6 +4,7 @@ import characters from "./characters.json"
 import ImageCard from "./components/ImageCard"
 import Wrapper from './components/wrapper'
 
+
 class Game extends Component {
     state = {
         characters: characters,
@@ -91,7 +92,7 @@ class Game extends Component {
                                 <ImageCard
                                     key={character.id}
                                     image={character.image}
-                                    width={'120px'}
+                                    width={'170px'}
                                 >
                                 </ImageCard >
                             </div>
